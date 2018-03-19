@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 
 class TodoCard extends Component {
   render() {
     const {
+      id,
       title,
       description,
       createdAt,
@@ -15,6 +18,9 @@ class TodoCard extends Component {
         <p>{description}</p>
         <p>{createdAt}</p>
         <p>{expiresAt}</p>
+        <Link to={`/todos/${id}`}>View</Link>
+        <Link to={`/todos/${id}/edit`}>Edit</Link>
+        <Link to={`/todos/${id}/delete`}>Delete</Link>
       </article>
     );
   }

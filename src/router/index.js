@@ -15,12 +15,12 @@ class RouterHandler extends Component {
       <Router>
         <App>
           <Route exact path="/" component={Home}/>
-          <Route path="/todos" component={Todos}/>
-          <Route path="/todos/3" component={ViewTodo}/>
-          <Route path="/todos/4/edit" component={EditTodo}/>
-          <Route path="/todos/5/delete" component={DeleteTodo}/>
-          <Route path="/history" component={History}/>
-          <Route path="/about" component={About}/>
+          <Route exact path="/todos" component={Todos}/>
+          <Route exact path="/todos/:id" component={ViewTodo}/>
+          <Route exact path="/todos/:id/edit" component={EditTodo}/>
+          <Route exact path="/todos/:id/delete" component={DeleteTodo}/>
+          <Route exact path="/history" component={History}/>
+          <Route exact path="/about" component={About}/>
         </App>
       </Router>
     );
