@@ -24,7 +24,7 @@ class Home extends Component {
       <Section>
         <SectionTitle>Last Todos</SectionTitle>
         <SectionContent>
-          <Link to="/todos/add">New Todo</Link>
+          <Link to="/todosAdd">New Todo</Link>
           {
             this.state.todos.map((todo, i) => {
               return <TodoCard key={i} todo={todo} />

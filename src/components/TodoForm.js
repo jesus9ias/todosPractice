@@ -16,7 +16,8 @@ class TodoForm extends Component {
       description: this.description.value,
       expiresAt: this.expiresAt.value
     };
-    console.log(form);
+    this.props.todo.update(form);
+    this.props.action(this.props.todo);
   }
 
   render() {
@@ -44,7 +45,8 @@ class TodoForm extends Component {
 }
 
 TodoForm.defaultProps = {
-  todo: PropTypes.Object
+  todo: PropTypes.Object,
+  action: PropTypes.Function
 }
 
 export default TodoForm;

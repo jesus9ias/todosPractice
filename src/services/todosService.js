@@ -1,4 +1,5 @@
 import storage from 'key-storage';
+import Guid from 'guid';
 import defaultTodos from './defaultTodos';
 import todosCreator from './todosCreator';
 
@@ -19,17 +20,42 @@ export const getTodos = (lasts = 0) => {
 export const getTodo = (id) => {
   const todos = JSON.parse(storage.get('todos'));
   const filteredTodo = todos.find((todo) => {
-    return todo.id === parseInt(id, 10);
+    return todo.id === id;
   });
   return todosCreator(filteredTodo);
 };
 
+export const updateTodo = (currentTodo) => {
+  const todos = JSON.parse(storage.get('todos'));
+  const newTodos = todos.map((todo, i) => {
+    if (todo.id === currentTodo.id) {
+      return currentTodo.viewAll();
+    }
+    return todo;
+  });
+  storage.set('todos', JSON.stringify(newTodos));
+};
+
+export const saveTodo = (currentTodo) => {
+  const todos = JSON.parse(storage.get('todos'));
+  todos.push(currentTodo);
+  storage.set('todos', JSON.stringify(todos));
+};
+
+export const deleteTodo = (currentTodo) => {
+  const todos = JSON.parse(storage.get('todos'));
+  const filteredTodos = todos.filter((todo) => {
+    return todo.id !== currentTodo.id;
+  });
+  storage.set('todos', JSON.stringify(filteredTodos));
+};
+
 export const blankTodo = () => {
-  return {
-    id: 0,
+  return todosCreator({
+    id: Guid.raw(),
     title: '',
     description: '',
     createdAt: '',
     expiresAt: ''
-  };
+  });
 };

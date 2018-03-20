@@ -5,7 +5,7 @@ export default class Todo {
     this.title = todo.title;
     this.description = todo.description;
     this.createdAt = todo.createdAt;
-    this.expiresAT = todo.expiresAT;
+    this.expiresAt = todo.expiresAt;
   }
 
   viewAll() {
@@ -14,7 +14,14 @@ export default class Todo {
       title: this.title,
       description: this.description,
       createdAt: this.createdAt,
-      expiresAT: this.expiresAT,
+      expiresAt: this.expiresAt,
     }
+  }
+
+  update(todo) {
+    this.title = todo.title;
+    this.description = todo.description;
+    this.expiresAt = todo.expiresAt;
+    console.log(todo, 'form');
   }
 }
