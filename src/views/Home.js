@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getTodos } from '../services/todosService';
 import Section from '../components/Section';
-import TodoCard from '../components/TodoCard';
 import SectionTitle from '../components/SectionTitle';
 import SectionContent from '../components/SectionContent';
-//  import './styles/App.css';
+import TodosContent from '../components/TodosContent';
+import '../styles/Home.css';
 
 class Home extends Component {
   constructor(props) {
@@ -25,11 +25,7 @@ class Home extends Component {
         <SectionTitle>Last Todos</SectionTitle>
         <SectionContent>
           <Link to="/todosAdd">New Todo</Link>
-          {
-            this.state.todos.map((todo, i) => {
-              return <TodoCard key={i} todo={todo} />
-            })
-          }
+          <TodosContent todos={this.state.todos} />
         </SectionContent>
       </Section>
     );

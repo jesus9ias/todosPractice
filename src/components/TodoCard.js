@@ -1,22 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { completeTodo } from '../services/todosService';
+import TodoButtons from './TodoButtons';
 
 class TodoCard extends Component {
-  constructor(props) {
-    super(props);
-    this.complete = this.complete.bind(this);
-  }
-
-  complete() {
-    this.props.todo.complete();
-    completeTodo(this.props.todo);
-  }
-
   render() {
     const {
-      id,
       title,
       description,
       createdAt,
@@ -25,20 +13,17 @@ class TodoCard extends Component {
       statusLabel
     } = this.props.todo.viewAll();
     return (
-      <article>
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <p>{createdAt}</p>
-        <p>{expiresAt}</p>
-        <p>{statusLabel}</p>
+      <article className="todo">
+        <div className="todo__data">
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <p>{createdAt}</p>
+          <p>{expiresAt}</p>
+          <p>{statusLabel}</p>
+        </div>
         {
           status === 1 ?
-            <div>
-              <button onClick={this.complete}>Complete</button>
-              <Link to={`/todos/${id}`}>View</Link>
-              <Link to={`/todos/${id}/edit`}>Edit</Link>
-              <Link to={`/todos/${id}/delete`}>Delete</Link>
-            </div>
+            <TodoButtons todo={this.props.todo} />
           :
             null
         }

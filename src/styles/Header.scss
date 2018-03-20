@@ -1,5 +1,11 @@
-.App-header {
-  background-color: #222;
-  padding: 20px;
-  color: white;
+@import 'lib/all.scss';
+
+.header {
+  background-color: $black;
+  padding: 10px;
+  color: $white;
+  &__title {
+    font-size: 32px;
+    margin: 0px;
+  }
 }

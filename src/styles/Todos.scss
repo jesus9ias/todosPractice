@@ -1,0 +1,15 @@
+@import 'lib/all.scss';
+
+.todos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .todo {
+    margin: 10px;
+    flex: 1 0 25%;
+    max-width: calc(25% - 20px);
+    -webkit-box-shadow: 2px 2px 23px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 23px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 23px 0px rgba(0,0,0,0.75);
+  }
+}
