@@ -12,7 +12,19 @@ export const populateTodos = (lasts = 0) => {
 export const getTodos = (lasts = 0) => {
   let todos = JSON.parse(storage.get('todos'));
   todos = lasts > 0 ? todos.slice(0, lasts) : todos;
-  return todos.map((todo) => {
+  return todos.filter((todo) => {
+    return todo.status === 1;
+  }).map((todo) => {
+    return todosCreator(todo);
+  });
+};
+
+export const getHistory = (lasts = 0) => {
+  let todos = JSON.parse(storage.get('todos'));
+  todos = lasts > 0 ? todos.slice(0, lasts) : todos;
+  return todos.filter((todo) => {
+    return todo.status === 2;
+  }).map((todo) => {
     return todosCreator(todo);
   });
 };
@@ -29,7 +41,7 @@ export const updateTodo = (currentTodo) => {
   const todos = JSON.parse(storage.get('todos'));
   const newTodos = todos.map((todo, i) => {
     if (todo.id === currentTodo.id) {
-      return currentTodo.viewAll();
+      return currentTodo.getAll();
     }
     return todo;
   });
@@ -38,7 +50,7 @@ export const updateTodo = (currentTodo) => {
 
 export const saveTodo = (currentTodo) => {
   const todos = JSON.parse(storage.get('todos'));
-  todos.push(currentTodo);
+  todos.push(currentTodo.getAll());
   storage.set('todos', JSON.stringify(todos));
 };
 
@@ -50,12 +62,21 @@ export const deleteTodo = (currentTodo) => {
   storage.set('todos', JSON.stringify(filteredTodos));
 };
 
+export const completeTodo = (currentTodo) => {
+  const todos = JSON.parse(storage.get('todos'));
+  const filteredTodos = todos.map((todo) => {
+    return todo.id === currentTodo.id ? currentTodo.getAll() : todo;
+  });
+  storage.set('todos', JSON.stringify(filteredTodos));
+};
+
 export const blankTodo = () => {
   return todosCreator({
     id: Guid.raw(),
     title: '',
     description: '',
     createdAt: '',
-    expiresAt: ''
+    expiresAt: '',
+    status: 1
   });
 };

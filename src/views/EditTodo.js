@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Section from '../components/Section';
 import SectionTitle from '../components/SectionTitle';
 import SectionContent from '../components/SectionContent';
@@ -21,6 +22,7 @@ class EditTodo extends Component {
             todo={getTodo(this.props.match.params.id)}
             action={this.update}
           />
+          <Link to="/todos">Regresar</Link>
         </SectionContent>
       </Section>
     );

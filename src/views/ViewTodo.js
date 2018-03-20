@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Section from '../components/Section';
 import SectionTitle from '../components/SectionTitle';
 import SectionContent from '../components/SectionContent';
@@ -17,6 +18,8 @@ class ViewTodo extends Component {
           {todo.description}
           {todo.createdAt}
           {todo.endsAt}
+          {todo.statusLabel[todo.status]}
+          <Link to="/todos">Regresar</Link>
         </SectionContent>
       </Section>
     );

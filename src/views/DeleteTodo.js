@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+//  import { withRouter } from 'react-router-dom'
 import Section from '../components/Section';
 import SectionTitle from '../components/SectionTitle';
 import SectionContent from '../components/SectionContent';
@@ -8,7 +9,6 @@ import { getTodo, deleteTodo } from '../services/todosService';
 //  import './styles/App.css';
 
 class DeleteTodo extends Component {
-
   constructor(props) {
     super(props);
     this.delete = this.delete.bind(this);
@@ -16,6 +16,7 @@ class DeleteTodo extends Component {
 
   delete(todo) {
     deleteTodo(todo);
+    this.props.history.push('/todos');
   }
 
   render() {

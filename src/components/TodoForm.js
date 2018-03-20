@@ -14,7 +14,9 @@ class TodoForm extends Component {
     const form = {
       title: this.title.value,
       description: this.description.value,
-      expiresAt: this.expiresAt.value
+      createdAt: '',
+      expiresAt: this.expiresAt.value,
+      status: 1
     };
     this.props.todo.update(form);
     this.props.action(this.props.todo);
