@@ -5,12 +5,16 @@ import SectionTitle from '../components/SectionTitle';
 import SectionContent from '../components/SectionContent';
 import TodoForm from '../components/TodoForm';
 import { getTodo, updateTodo } from '../services/todosService';
-//  import logo from './images/logo.svg';
-//  import './styles/App.css';
 
 class EditTodo extends Component {
+  constructor(props) {
+    super(props);
+    this.update = this.update.bind(this);
+  }
+
   update(currentTodo) {
     updateTodo(currentTodo);
+    this.props.history.push('/todos');
   }
 
   render() {
