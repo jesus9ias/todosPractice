@@ -16,22 +16,23 @@ class TodoButtons extends Component {
   complete() {
     this.props.todo.complete();
     completeTodo(this.props.todo);
+    global.eventHub.emit('todoCompleted');
   }
 
   render() {
     return (
-      <div className="todo__buttons">
-        <button onClick={this.complete}>
-          <img alt="View" src={completeIcon} width="32px" />
+      <div className="card__buttons">
+        <button className="card__button" onClick={this.complete}>
+          <img alt="View" src={completeIcon} width="24px" />
         </button>
-        <Link to={`/todos/${this.props.todo.id}`}>
-        <img alt="View" src={viewIcon} width="32px" />
+        <Link className="card__button" to={`/todos/${this.props.todo.id}`}>
+          <img alt="View" src={viewIcon} width="24px" />
         </Link>
-        <Link to={`/todos/${this.props.todo.id}/edit`}>
-          <img alt="View" src={editIcon} width="32px" />
+        <Link className="card__button" to={`/todos/${this.props.todo.id}/edit`}>
+          <img alt="View" src={editIcon} width="24px" />
         </Link>
-        <Link to={`/todos/${this.props.todo.id}/delete`}>
-        <img alt="View" src={deleteIcon} width="32px" />
+        <Link className="card__button" to={`/todos/${this.props.todo.id}/delete`}>
+          <img alt="View" src={deleteIcon} width="24px" />
         </Link>
       </div>
     );

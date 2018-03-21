@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getTodos } from '../services/todosService';
 import Section from '../components/Section';
-import TodosContent from '../components/TodosContent';
+import TodoCards from '../components/TodoCards';
 import SectionTitle from '../components/SectionTitle';
 import SectionContent from '../components/SectionContent';
 
@@ -15,7 +15,15 @@ class Todos extends Component {
   }
 
   componentDidMount() {
-    this.setState({ todos: getTodos() });
+    this.getAll();
+    global.eventHub.addListener('todoCompleted', () => {
+
+      this.getAll();
+    });
+  }
+
+  getAll() {
+    this.setState({ todos: getTodos(2) });
   }
 
   render() {
@@ -23,8 +31,8 @@ class Todos extends Component {
       <Section>
         <SectionTitle>Todos</SectionTitle>
         <SectionContent>
-          <Link to="/todosAdd">New Todo</Link>
-          <TodosContent todos={this.state.todos} />
+          <Link className="button button--primary" to="/todosAdd">New Todo</Link>
+          <TodoCards todos={this.state.todos} />
         </SectionContent>
       </Section>
     );

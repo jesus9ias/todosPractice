@@ -13,13 +13,13 @@ class TodoCard extends Component {
       statusLabel
     } = this.props.todo.viewAll();
     return (
-      <article className="todo">
-        <div className="todo__data">
-          <h3>{title}</h3>
-          <p>{description}</p>
-          <p>{createdAt}</p>
-          <p>{expiresAt}</p>
-          <p>{statusLabel}</p>
+      <article className="card">
+        <div className="card__data">
+          <h3 className="card__title">{title}</h3>
+          <p className="card__description">{description}</p>
+          <p className="card__date">{createdAt}</p>
+          <p className="card__date">{expiresAt}</p>
+          <p className="card__status">{statusLabel}</p>
         </div>
         {
           status === 1 ?

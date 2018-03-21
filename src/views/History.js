@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getHistory } from '../services/todosService';
 import Section from '../components/Section';
-import TodosContent from '../components/TodosContent';
+import TodoCards from '../components/TodoCards';
 import SectionTitle from '../components/SectionTitle';
 import SectionContent from '../components/SectionContent';
 
@@ -24,7 +24,7 @@ class History extends Component {
         <SectionTitle>History</SectionTitle>
         <SectionContent>
           <Link to="/todosAdd">New Todo</Link>
-          <TodosContent todos={this.state.todos} />
+          <TodoCards todos={this.state.todos} />
         </SectionContent>
       </Section>
     );

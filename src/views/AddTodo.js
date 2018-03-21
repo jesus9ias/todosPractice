@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import Section from '../components/Section';
 import SectionTitle from '../components/SectionTitle';
 import SectionContent from '../components/SectionContent';
@@ -30,4 +31,5 @@ class AddTodo extends Component {
   }
 }
 
-export default AddTodo;
+const RoutedAddTodo = withRouter(AddTodo);
+export default RoutedAddTodo;

@@ -1,11 +1,24 @@
 @import 'lib/all.scss';
 
 .header {
+  display: flex;
   background-color: $black;
-  padding: 10px;
-  color: $white;
+  padding: 0px;
   &__title {
     font-size: 32px;
     margin: 0px;
+    padding: 10px;
+    color: $white;
+    text-decoration: none;
+  }
+  &__link {
+    font-size: 20px;
+    margin: 0px 10px;
+    padding: 16px 10px;
+    color: $white;
+    text-decoration: none;
+    &:hover {
+      background: blue;
+    }
   }
 }

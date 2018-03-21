@@ -1,0 +1,23 @@
+
+.button {
+  display: inline-block;
+  text-decoration: none;
+  border: 0px;
+  background: none;
+  color: black;
+  font-size: 20px;
+  padding: 3px;
+  border-radius: 5px;
+  &--primary {
+    color: white;
+    background: blue;
+  }
+  &--secondary {
+    color: white;
+    background: red;
+  }
+  &--basic {
+    color: white;
+    background: green;
+  }
+}

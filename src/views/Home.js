@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getTodos } from '../services/todosService';
+import { getLastTodos } from '../services/todosService';
 import Section from '../components/Section';
 import SectionTitle from '../components/SectionTitle';
 import SectionContent from '../components/SectionContent';
-import TodosContent from '../components/TodosContent';
+import TodoCards from '../components/TodoCards';
 import '../styles/Home.css';
 
 class Home extends Component {
@@ -13,10 +13,18 @@ class Home extends Component {
     this.state = {
       todos: []
     }
+    this.getAll = this.getAll.bind(this);
   }
 
   componentDidMount() {
-    this.setState({ todos: getTodos(2) });
+    this.getAll();
+    global.eventHub.addListener('todoCompleted', () => {
+      this.getAll();
+    });
+  }
+
+  getAll() {
+    this.setState({ todos: getLastTodos(2) });
   }
 
   render() {
@@ -24,8 +32,9 @@ class Home extends Component {
       <Section>
         <SectionTitle>Last Todos</SectionTitle>
         <SectionContent>
-          <Link to="/todosAdd">New Todo</Link>
-          <TodosContent todos={this.state.todos} />
+          <Link className="button button--primary" to="/todosAdd">New Todo</Link>
+          <TodoCards todos={this.state.todos} />
+          <Link className="button button--primary" to="/todos/">All Todos</Link>
         </SectionContent>
       </Section>
     );

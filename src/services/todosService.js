@@ -9,15 +9,24 @@ export const populateTodos = (lasts = 0) => {
   }
 };
 
-export const getTodos = (lasts = 0) => {
+export const getTodos = () => {
   let todos = JSON.parse(storage.get('todos'));
-  todos = lasts > 0 ? todos.slice(0, lasts) : todos;
   return todos.filter((todo) => {
     return todo.status === 1;
   }).map((todo) => {
     return todosCreator(todo);
   });
 };
+
+export const getLastTodos = (lasts = 0) => {
+  let todos = JSON.parse(storage.get('todos'));
+  return todos.filter((todo) => {
+    return todo.status === 1;
+  }).slice(0, lasts).map((todo) => {
+    return todosCreator(todo);
+  });
+};
+
 
 export const getHistory = (lasts = 0) => {
   let todos = JSON.parse(storage.get('todos'));

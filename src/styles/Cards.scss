@@ -1,0 +1,56 @@
+@import 'lib/all.scss';
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  flex: 1 0 25%;
+  max-width: calc(25% - 20px);
+  -webkit-box-shadow: 2px 2px 23px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 2px 23px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px 2px 23px 0px rgba(0,0,0,0.75);
+  .card__data {
+    flex: 1;
+    padding: 5px;
+  }
+  .card__title {
+    margin: 3px;
+    font-size: 20px;
+  }
+  .card__description {
+    margin: 3px;
+    font-size: 16px;
+  }
+  .card__date {
+    display: inline-block;
+    margin: 3px;
+    font-size: 14px;
+  }
+  .card__status {
+    display: table;
+    margin: 3px;
+    padding: 3px;
+    font-size: 14px;
+    color: $white;
+    background: red;
+    border-radius: 5px;
+  }
+}
+
+.card__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  .card__button {
+    background: none;
+    border: 0px;
+    margin: 3px;
+  } 
+}
